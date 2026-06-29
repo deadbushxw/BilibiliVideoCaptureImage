@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "BilibiliCaptureImage",
-    "version": "1.1.0",
+    "version": "1.0.0.0",
     "description": "capture bilibili current video frame to image",
     "icons": {
         "128": "icon/logo-B.png"
@@ -9,12 +9,10 @@
     "content_scripts": [
         {
             "matches": [
-                "*://www.bilibili.com/*",
-                "*://bilibili.com/*",
-                "*://player.bilibili.com/*"
+                "http://www.bilibili.com/*",
+                "https://www.bilibili.com/*"
             ],
-            "js": ["js/content_scripts.js"],
-            "run_at": "document_end"
+            "js": ["js/content_scripts.js"]
         }
     ],
     "background": {
@@ -23,23 +21,18 @@
     },
     "permissions": [
         "contextMenus",
-        "downloads",
-        "storage"
+        "clipboardWrite"
     ],
     "host_permissions": [
-        "*://*/*"
+        "*://www.bilibili.com/*"
     ],
     "commands": {
         "BilibiliCaptureImage": {
             "suggested_key": {
-                "default": "Ctrl+Shift+K",
-                "mac": "Command+Shift+K"
+                "default": "Alt+C",
+                "mac": "Alt+C"
             },
             "description": "capture bilibili current video frame to image"
         }
-    },
-    "options_ui": {
-        "page": "options.html",
-        "open_in_tab": false
     }
 }
